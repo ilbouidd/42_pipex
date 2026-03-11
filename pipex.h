@@ -6,7 +6,7 @@
 /*   By: ilbouidd <ilbouidd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 04:16:51 by ilbouidd          #+#    #+#             */
-/*   Updated: 2026/03/10 09:39:40 by ilbouidd         ###   ########.fr       */
+/*   Updated: 2026/03/11 10:09:29 by ilbouidd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ void		exec_cmd(char *strcmd, char **env);
 char		*find_path(char *cmd, char **env);
 char		*find_path_second(char **paths, char *cmd);
 char		*get_path_env(char **env);
+void		exec_cmd1(char *strcmd, char ***cmd_ptr);
+void		execve_last(char *path, char **cmd, char *cmd0, char **env);
 
 #endif

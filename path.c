@@ -6,7 +6,7 @@
 /*   By: ilbouidd <ilbouidd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 02:20:45 by ilbouidd          #+#    #+#             */
-/*   Updated: 2026/03/10 11:56:43 by ilbouidd         ###   ########.fr       */
+/*   Updated: 2026/03/11 09:16:27 by ilbouidd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ char	*find_path(char *cmd, char **env)
 	if (!paths)
 		return (NULL);
 	path_all = find_path_second(paths, cmd);
+	if (!path_all)
+		free_split(paths);
+	free(paths);
 	return (path_all);
 }
 
@@ -46,13 +49,10 @@ char	*find_path_second(char **paths, char *cmd)
 		path_all = ft_strjoin(path_tmp, cmd);
 		free(path_tmp);
 		if (access(path_all, X_OK) == 0)
-		{
 			return (path_all);
-		}
 		free(path_all);
 		i++;
 	}
-	free(paths);
 	return (NULL);
 }
 
